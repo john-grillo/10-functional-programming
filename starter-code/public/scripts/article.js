@@ -43,6 +43,9 @@ const app = app || {};
     // of functions. So if we set a variable equal to the result of a .map, it will be our transformed array.
     // There is no need to push to anything.
 
+    Article.all = rows.map(function(ele) {new Article(ele);} );
+    console.log(Article.all); 
+ 
     /* OLD forEach():
     rawData.forEach(function(ele) {
     Article.all.push(new Article(ele));

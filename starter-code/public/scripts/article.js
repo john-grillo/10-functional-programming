@@ -1,5 +1,5 @@
 'use strict';
-const app = app || {};
+var app = app || {};
 
 // REVIEW: Check out all of the functions that we've cleaned up with arrow function syntax.
 (function (module) {
@@ -43,9 +43,10 @@ const app = app || {};
     // of functions. So if we set a variable equal to the result of a .map, it will be our transformed array.
     // There is no need to push to anything.
 
-    Article.all = rows.map(function(ele) {new Article(ele);} );
+    // Article.all = rows.map(function(ele) {new Article(ele);} );
+    Article.all = rows.map(ele => new Article(ele));
     console.log(Article.all); 
- 
+    
     /* OLD forEach():
     rawData.forEach(function(ele) {
     Article.all.push(new Article(ele));
@@ -66,7 +67,10 @@ const app = app || {};
 
   // TODO: Chain together a `map` and a `reduce` call to get a rough count of all words in all articles.
   Article.numWordsAll = () => {
-    return Article.all.map().reduce()
+    // .split(' ').length was to count the number of spaces in between words
+    // .reduce https://mzl.la/2rVAJdO
+    // braces are not needed after => if function is only one line.
+    return Article.all.map(article => article.body.split(' ').length).reduce((acc, val) => acc + val);
   };
 
   // TODO: Chain together a `map` and a `reduce` call to produce an array of unique author names. You will

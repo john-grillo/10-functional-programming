@@ -91,7 +91,12 @@ var app = app || {};
       // HINT: This .map should be setup to return an object literal with two properties.
       // The first property should be pretty straightforward, but you will need to chain
       // some combination of filter, map, and reduce to get the value for the second
-      // property.      
+      // property.
+      let authorObj = {
+        authorName: author,
+        numWords: 600
+      };
+      console.log('authorObj = ' + authorObj); 
     })
   };
 

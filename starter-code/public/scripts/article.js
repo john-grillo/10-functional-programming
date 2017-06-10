@@ -38,12 +38,11 @@ var app = app || {};
   Article.loadAll = rows => {
     rows.sort((a, b) => (new Date(b.publishedOn)) - (new Date(a.publishedOn)));
 
-    // TODO: Refactor this forEach code, by using a `.map` call instead, since what we are trying to accomplish
+    // DONE: Refactor this forEach code, by using a `.map` call instead, since what we are trying to accomplish
     // is the transformation of one collection into another. Remember that we can set variables equal to the result
     // of functions. So if we set a variable equal to the result of a .map, it will be our transformed array.
     // There is no need to push to anything.
 
-    // Article.all = rows.map(function(ele) {new Article(ele);} );
     Article.all = rows.map(ele => new Article(ele));
     console.log(Article.all); 
     
@@ -65,7 +64,7 @@ var app = app || {};
       )
   };
 
-  // TODO: Chain together a `map` and a `reduce` call to get a rough count of all words in all articles.
+  // DONE?: Chain together a `map` and a `reduce` call to get a rough count of all words in all articles.
   Article.numWordsAll = () => {
     // .split(' ').length was to count the number of spaces in between words
     // .reduce https://mzl.la/2rVAJdO
@@ -73,10 +72,15 @@ var app = app || {};
     return Article.all.map(article => article.body.split(' ').length).reduce((acc, val) => acc + val);
   };
 
-  // TODO: Chain together a `map` and a `reduce` call to produce an array of unique author names. You will
+  // DONE?: Chain together a `map` and a `reduce` call to produce an array of unique author names. You will
   // probably need to use the optional accumulator argument in your reduce call.
+  // unique values in an array: http://bit.ly/2rVN4yO
+  // v = the value of the element
+  // i = the index of the element
+  // a = the array being traversed
+  // indexOf https://mzl.la/2rePkPM
   Article.allAuthors = () => {
-    return Article.all.map().reduce();
+    return Article.all.map(article => article.author).filter((v, i, a) => a.indexOf(v) === i);
   };
 
   Article.numWordsByAuthor = () => {
@@ -87,8 +91,7 @@ var app = app || {};
       // HINT: This .map should be setup to return an object literal with two properties.
       // The first property should be pretty straightforward, but you will need to chain
       // some combination of filter, map, and reduce to get the value for the second
-      // property.
-
+      // property.      
     })
   };
 

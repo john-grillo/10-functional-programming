@@ -1,5 +1,5 @@
 'use strict';
-const app = app || {};
+var app = app || {};
 
 // REVIEW: Wrap the contents of this file, except for the preceding 'use strict' and 'var app...' declararions, in an IIFE.
 // Give the IIFE a parameter called 'module'.
@@ -138,6 +138,9 @@ const app = app || {};
   };
 
   articleView.initAdminPage = function() {
+    console.log('hi');
+    console.log('numWordsAll = ' + app.Article.numWordsAll());
+    console.log('allAuthors' + app.Article.allAuthors());
     // TODO: Call the Handlebars `.compile` function, which will return a function for you to use where needed.
     // Make sure you assign the result of your Handlebars.compile call to a variable called "template", since
     // we are then calling "template" on line 117.
